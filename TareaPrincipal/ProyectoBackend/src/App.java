@@ -79,6 +79,72 @@ public class App {
         String estado_delrecurso;
         String ubicacion_delrecurso;
 
+        // MENUS
+        /*
+         * usamos opciones para el menu principal, y opcion1, opcion2, opcion3, opcion4,
+         * opcion5, opcion6 para los submenus de cada modelo.
+         */
+        int opciones = 0, opcion1 = 0, opcion2 = 0, opcion3 = 0, opcion4 = 0, opcion5 = 0, opcion6 = 0;
+
+        do {
+            opciones = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO AL SOFTWARE INSTITUCIONAL ACADEMICO \n"
+                    + "1. iniciar sesion \n"
+                    + "2. registrarse \n"
+                    + "3. salir"));
+            switch (opciones) {
+                case 1:
+                    do {
+                        opcion1 = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO INICIO DE SESION \n"
+                                + "Elija una de las siguientes opciones: \n"
+                                + "1. iniciar sesion \n"
+                                + "2. salir..."));
+                        switch (opcion1) {
+                            case 1:
+                                boolean encontrado = false;
+                                Id_delregistro = JOptionPane.showInputDialog("Ingrese su ID:");
+                                contraseña_delregistro = JOptionPane.showInputDialog("Ingrese su contraseña:");
+                                for (registro comprobar : registroList) {
+                                    if (comprobar.getPersonaladiministrativoId().equals(Id_delregistro)
+                                            && comprobar.getContraseña_personaladiministrativo().equals(
+                                                    contraseña_delregistro)) {
+                                        encontrado = true;
+                                        break;
+                                    }
+                                }
+                                if (encontrado) {
+                                    JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "ID o contraseña incorrectos");
+                                }
+                                break;
+                            case 2:
+                                JOptionPane.showMessageDialog(null, "Gracias por usar el software");
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "ERROR, solo pueden numero del 1 al 2");
+                                break;
+
+                        }
+                    } while (opcion1 != 2);
+                    break;
+                case 2:
+                    nombre_delregistro = JOptionPane.showInputDialog("Ingrese su nombre:");
+                    telefono_delregistro = JOptionPane.showInputDialog("Ingrese su telefono:");
+                    correo_delregistro = JOptionPane.showInputDialog("Ingrese su correo:");
+                    Id_delregistro = JOptionPane.showInputDialog("Ingrese su ID:");
+                    contraseña_delregistro = JOptionPane.showInputDialog("Ingrese su contraseña:");
+                    registroList.add(new registro(Id_delregistro, contraseña_delregistro, nombre_delregistro,
+                            telefono_delregistro, correo_delregistro));
+                    JOptionPane.showMessageDialog(null, "registrado exitosamente");
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Gracias por usar el software");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "ERROR, solo pueden numero del 1 al 3");
+                    break;
+            }
+        } while (opciones != 3);
 
     }
 
