@@ -244,7 +244,7 @@ public class App {
 											// -----------------------------------------------------------------------------------------------
 											case 2:
 												// MENU DE PARTICPANTES
-												// JOHAN GONZALES
+												// JOHAN GONZALEZ
 												do {
 													opcionParticipantes = Integer.parseInt(JOptionPane.showInputDialog("PARTICIPANTES \n"
 															+ "1. Registrar participante \n"
@@ -474,7 +474,6 @@ public class App {
 											case 4:
 												// MENU DE PATROCINIO
 												// JUAN DUARTE
-												// MENU DE PATROCINIO
 												do {
 													opcionpatrocinio = Integer.parseInt(JOptionPane.showInputDialog("PATROCINIO \n"
 															+ "1. Ver todos los patrocinios \n"
@@ -526,7 +525,7 @@ public class App {
 														case 3:
 															// actualizar patrocinador
 															Id_delpatrocinador = JOptionPane
-																	.showInputDialog("Ingrese el ID del patrocinador a actualizar:");
+																	.showInputDialog("Ingrese el ID del patrocinador a actualizar");
 															boolean patrocinadoractualizado = false;
 															for (patrocinio update : patrocinioList) {
 																if (update.getPatrocinadorId().equals(Id_delpatrocinador)) {
@@ -576,7 +575,7 @@ public class App {
 											// -----------------------------------------------------------------------------------------------------------
 											case 5:
 												// MENU MANTENIMIENTO
-												// SAMUEL GONZALES
+												// SAMUEL GONZALEZ
 												do {
 													opcionmantenimiento = Integer.parseInt(JOptionPane.showInputDialog("MANTENIMIENTO \n"
 															+ "1. Ver todos los objetos en mantenimiento \n"
