@@ -470,13 +470,127 @@ public class App {
 													}
 												} while (opcionrecursos != 5);
 												break;
-												//--------------------------------------------------------------------------------------------------------
+											// --------------------------------------------------------------------------------------------------------
 											case 4:
 												// MENU DE PATROCINIO
 												// JUAN DUARTE
 												break;
 											case 5:
-												// MENU SAMUEL
+												// MENU MANTENIMIENTO
+												// SAMUEL GONZALES
+												do {
+													opcionmantenimiento = Integer.parseInt(JOptionPane.showInputDialog("MANTENIMIENTO \n"
+															+ "1. Ver todos los objetos en mantenimiento \n"
+															+ "2. Crear nuevo objeto en mantenimiento \n"
+															+ "3. Actualizar objeto \n"
+															+ "4. Eliminar objeto \n"
+															+ "5. Salir"));
+													switch (opcionmantenimiento) {
+														case 1:
+															// mostrar objetos
+															if (mantenimientoList.isEmpty()) {
+																JOptionPane.showMessageDialog(null, "no hay objetos en mantenimiento registrados");
+															} else {
+																String hojita = "";
+																for (mantenimientoderecursos mostrar : mantenimientoList) {
+																	hojita += "------ \n"
+																			+ "ID: " + mostrar.getManteni_recursoId() + "\n"
+																			+ "nombre: " + mostrar.getNombre_mantenimientorecursos() + "\n"
+																			+ "descripcion: " + mostrar.getCategoria_mantenimientorecursos() + "\n"
+																			+ "estado: " + mostrar.getEstado_mantenimientorecursos() + "\n"
+																			+ "categoria: " + mostrar.getUbicacion_mantenimientorecursos() + "\n";
+																}
+																JOptionPane.showMessageDialog(null, "LISTA DE MANTENIMIENTOS \n" + hojita);
+															}
+															break;
+														case 2:
+															// meter un objeto en mantenimiento
+															Id_mantenimientoderecursos = JOptionPane
+																	.showInputDialog("Ingrese el ID del mantenimiento:");
+															boolean Idmanteniexiste = false;
+															for (mantenimientoderecursos comprobar : mantenimientoList) {
+																if (comprobar.getManteni_recursoId().equals(Id_mantenimientoderecursos)) {
+																	Idmanteniexiste = true;
+																	break;
+																}
+															}
+															if (Idmanteniexiste) {
+																JOptionPane.showMessageDialog(null, "ese ID ya existe");
+															} else {
+																nombre_mantenimientoderecursos = JOptionPane
+																		.showInputDialog("Ingrese el nombre del objeto");
+																categoria_mantenimientoderecursos = JOptionPane
+																		.showInputDialog("Ingrese la descripcion");
+																estado_mantenimientoderecursos = JOptionPane.showInputDialog("Ingrese el estado");
+																ubicacion_mantenimientoderecursos = JOptionPane.showInputDialog("Ingrese la categoria");
+																fechadeingreso_mantenimientoderecursos = JOptionPane
+																		.showInputDialog("Ingrese la fecha de ingreso");
+																mantenimientoList.add(new mantenimientoderecursos(Id_mantenimientoderecursos,
+																		nombre_mantenimientoderecursos, categoria_mantenimientoderecursos,
+																		estado_mantenimientoderecursos, ubicacion_mantenimientoderecursos,
+																		fechadeingreso_mantenimientoderecursos));
+																JOptionPane.showMessageDialog(null, "Mantenimiento registrado");
+															}
+															break;
+														case 3:
+															// actualizar objeto en mantenimiento
+															Id_mantenimientoderecursos = JOptionPane
+																	.showInputDialog("Ingrese el ID del objeto a actualizar");
+															boolean manteniactualizado = false;
+															for (mantenimientoderecursos cambiar : mantenimientoList) {
+																if (cambiar.getManteni_recursoId().equals(Id_mantenimientoderecursos)) {
+																	manteniactualizado = true;
+
+																	nombre_mantenimientoderecursos = JOptionPane
+																			.showInputDialog("Ingrese el nuevo nombre");
+																	categoria_mantenimientoderecursos = JOptionPane
+																			.showInputDialog("Ingrese la nueva descripcion");
+																	estado_mantenimientoderecursos = JOptionPane
+																			.showInputDialog("Ingrese el nuevo estado");
+																	ubicacion_mantenimientoderecursos = JOptionPane
+																			.showInputDialog("Ingrese la nueva categoria");
+																	fechadeingreso_mantenimientoderecursos = JOptionPane
+																			.showInputDialog("Ingrese la nueva fecha de ingreso");
+
+																	cambiar.setNombre_mantenimientorecursos(nombre_mantenimientoderecursos);
+																	cambiar.setCategoria_mantenimientorecursos(categoria_mantenimientoderecursos);
+																	cambiar.setEstado_mantenimientorecursos(estado_mantenimientoderecursos);
+																	cambiar.setUbicacion_mantenimientorecursos(ubicacion_mantenimientoderecursos);
+																	cambiar
+																			.setFechadeingreso_mantenimientorecursos(fechadeingreso_mantenimientoderecursos);
+																	JOptionPane.showMessageDialog(null, "objeto actualizado");
+																	break;
+																}
+															}
+															if (!manteniactualizado) {
+																JOptionPane.showMessageDialog(null, "Este ID no existe");
+															}
+															break;
+														case 4:
+															Id_mantenimientoderecursos = JOptionPane
+																	.showInputDialog("Ingrese el ID del objeto a eliminar ");
+															boolean mantenimientoeliminado = false;
+															for (int i = 0; i < mantenimientoList.size(); i++) {
+																if (mantenimientoList.get(i).getManteni_recursoId()
+																		.equals(Id_mantenimientoderecursos)) {
+																	mantenimientoList.remove(i);
+																	mantenimientoeliminado = true;
+																	JOptionPane.showMessageDialog(null, "objeto eliminado");
+																	break;
+																}
+															}
+															if (!mantenimientoeliminado) {
+																JOptionPane.showMessageDialog(null, "ID no encontrado");
+															}
+															break;
+														case 5:
+															JOptionPane.showMessageDialog(null, "Devuelta al menu principal");
+															break;
+														default:
+															JOptionPane.showMessageDialog(null, "ERROR, solo numeros del 1 al 5");
+															break;
+													}
+												} while (opcionmantenimiento != 5);
 												break;
 											case 6:
 												JOptionPane.showMessageDialog(null, "Cerrando sesión...");
