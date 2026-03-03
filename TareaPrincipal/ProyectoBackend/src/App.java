@@ -478,7 +478,7 @@ public class App {
 												do {
 													opcionpatrocinio = Integer.parseInt(JOptionPane.showInputDialog("PATROCINIO \n"
 															+ "1. Ver todos los patrocinios \n"
-															+ "2. Crear un nuevo perfil de patrocinio \n"
+															+ "2. Crear un nuevo perfil de patrocininador\n"
 															+ "3. Actualizar patrocinador \n"
 															+ "4. Eliminar patrocinador \n"
 															+ "5. Salir"));
@@ -740,7 +740,5 @@ public class App {
 					break;
 			}
 		} while (opciones != 3);
-
 	}
-
 }
