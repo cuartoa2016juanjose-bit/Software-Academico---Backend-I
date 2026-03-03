@@ -1,12 +1,12 @@
 package models;
 
-public class Participantes {
+public class clasejohan {
     private String nombre;
     private String ubicacion;
     private String correo;
     private String rol;
 
-    public Participantes(String nombre, String ubicacion, String correo, String rol) {
+    public clasejohan(String nombre, String ubicacion, String correo, String rol) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.correo = correo;
