@@ -131,15 +131,120 @@ public class App {
 												+ "5. Mantenimiento de recursos \n"
 												+ "6. Cerrar sesión"));
 										switch (opcion2) {
-											// MENU DE PROYECTOS
-											// JHON STIVEN
 											case 1:
-												// menu de proyectos
+												// MENU DE PROYECTOS
+												// JHON STIVEN
+												do {
+													opcionproyectos = Integer.parseInt(JOptionPane.showInputDialog("PROYECTOS \n"
+															+ "1. Registrar proyecto \n"
+															+ "2. Ver todos los proyectos \n"
+															+ "3. Actualizar proyecto \n"
+															+ "4. Eliminar proyecto \n"
+															+ "5. Salir"));
+													switch (opcionproyectos) {
+														case 1:
+															// registrar proyecto
+															Id_delproyecto = JOptionPane.showInputDialog("Ingrese el ID del proyecto:");
+															boolean IDproyectoexiste = false;
+															for (proyectos comprobar : proyectosList) {
+																if (comprobar.getProyectoId().equals(Id_delproyecto)) {
+																	IDproyectoexiste = true;
+																	break;
+																}
+															}
+															if (IDproyectoexiste) {
+																JOptionPane.showMessageDialog(null, "ese ID ya existe");
+															} else {
+																nombre_delproyecto = JOptionPane.showInputDialog("Ingrese el nombre del proyecto");
+																tipo_delproyecto = JOptionPane.showInputDialog("Ingrese el tipo del proyecto");
+																descripcion_delproyecto = JOptionPane
+																		.showInputDialog("Ingrese la descripcion del proyecto");
+																estado_delproyecto = JOptionPane.showInputDialog("Ingrese el estado del proyecto");
+																fechaInicio_delproyecto = JOptionPane.showInputDialog("Ingrese la fecha de inicio");
+																fechaFin_delproyecto = JOptionPane.showInputDialog("Ingrese la fecha de fin");
+																proyectosList.add(new proyectos(Id_delproyecto, nombre_delproyecto, tipo_delproyecto,
+																		descripcion_delproyecto, fechaInicio_delproyecto, fechaFin_delproyecto,
+																		estado_delproyecto));
+																JOptionPane.showMessageDialog(null, "proyecto registrado");
+															}
+															break;
+														case 2:
+															// ver todos los proyectos
+															if (proyectosList.isEmpty()) {
+																JOptionPane.showMessageDialog(null, "No hay proyectos registrados");
+															} else {
+																String hoja = "";
+																for (proyectos mostrarproyectoss : proyectosList) {
+																	hoja += "------ \n"
+																			+ "ID: " + mostrarproyectoss.getProyectoId() + "\n"
+																			+ "nombre: " + mostrarproyectoss.getNombre_proyecto() + "\n"
+																			+ "tipo: " + mostrarproyectoss.getTipo_proyecto() + "\n"
+																			+ "descripcion: " + mostrarproyectoss.getDescripcion_proyecto() + "\n"
+																			+ "estado: " + mostrarproyectoss.getEstado_proyecto() + "\n"
+																			+ "fecha inicio: " + mostrarproyectoss.getFechaInicio_proyecto() + "\n"
+																			+ "fecha fin: " + mostrarproyectoss.getFechaFin_proyecto() + "\n";
+																}
+																JOptionPane.showMessageDialog(null, "LISTA DE PROYECTOS \n" + hoja);
+															}
+															break;
+														case 3:
+															// actualizar proyecto
+															Id_delproyecto = JOptionPane.showInputDialog("Ingrese el ID del proyecto a actualizar");
+															boolean proyectoactualizado = false;
+															for (proyectos actualizarrr : proyectosList) {
+																if (actualizarrr.getProyectoId().equals(Id_delproyecto)) {
+																	proyectoactualizado = true;
+																	nombre_delproyecto = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+																	tipo_delproyecto = JOptionPane.showInputDialog("Ingrese el nuevo tipo");
+																	descripcion_delproyecto = JOptionPane.showInputDialog("Ingrese la nueva descripcion");
+																	estado_delproyecto = JOptionPane.showInputDialog("Ingrese el nuevo estado");
+																	fechaInicio_delproyecto = JOptionPane
+																			.showInputDialog("Ingrese la nueva fecha de inicio");
+																	fechaFin_delproyecto = JOptionPane.showInputDialog("Ingrese la nueva fecha de fin");
+																	// actualizamos
+																	actualizarrr.setNombre_proyecto(nombre_delproyecto);
+																	actualizarrr.setTipo_proyecto(tipo_delproyecto);
+																	actualizarrr.setDescripcion_proyecto(descripcion_delproyecto);
+																	actualizarrr.setEstado_proyecto(estado_delproyecto);
+																	actualizarrr.setFechaInicio_proyecto(fechaInicio_delproyecto);
+																	actualizarrr.setFechaFin_proyecto(fechaFin_delproyecto);
+																	JOptionPane.showMessageDialog(null, "proyecto actualizado");
+																	break;
+																}
+															}
+															if (!proyectoactualizado) {
+																JOptionPane.showMessageDialog(null, "Este ID no existe");
+															}
+															break;
+														case 4:
+															// eliminar proyecto
+															Id_delproyecto = JOptionPane.showInputDialog("ID del proyecto a eliminar:");
+															boolean proyectoEliminado = false;
+															for (int i = 0; i < proyectosList.size(); i++) {
+																if (proyectosList.get(i).getProyectoId().equals(Id_delproyecto)) {
+																	proyectosList.remove(i);
+																	proyectoEliminado = true;
+																	JOptionPane.showMessageDialog(null, "Proyecto eliminado");
+																	break;
+																}
+															}
+															if (!proyectoEliminado) {
+																JOptionPane.showMessageDialog(null, "ID no encontrado");
+															}
+															break;
+														case 5:
+															JOptionPane.showMessageDialog(null, "Devuelta al menu principal");
+															break;
+														default:
+															JOptionPane.showMessageDialog(null, "ERROR, solo numeros del 1 al 5");
+															break;
+													}
+												} while (opcionproyectos != 5);
 												break;
-											// MENU DE PARTICPANTES
-											// JOHAN GONZALES
+											// -----------------------------------------------------------------------------------------------
 											case 2:
-												// sub menu de participantes
+												// MENU DE PARTICPANTES
+												// JOHAN GONZALES
 												do {
 													opcionParticipantes = Integer.parseInt(JOptionPane.showInputDialog("PARTICIPANTES \n"
 															+ "1. Registrar participante \n"
@@ -170,7 +275,6 @@ public class App {
 																correo_delosparticipantes = JOptionPane
 																		.showInputDialog("Ingrese el correo del participante:");
 																rol_delosparticipante = JOptionPane.showInputDialog("Ingrese el rol del participante:");
-
 																participantesList
 																		.add(new participantes(Id_delosparticipantes, nombre_delosparticipantes,
 																				ubicacion_participante, correo_delosparticipantes, rol_delosparticipante));
@@ -231,7 +335,6 @@ public class App {
 																			.showInputDialog("Ingrese el nuevo correo del participante");
 																	rol_delosparticipante = JOptionPane
 																			.showInputDialog("Ingrese el nuevo rol del participante");
-
 																	actualizarparticipante.setNombre_participante(nombre_delosparticipantes);
 																	actualizarparticipante.setUbicacion_participante(ubicacion_participante);
 																	actualizarparticipante.setCorreo_participante(correo_delosparticipantes);
@@ -266,12 +369,10 @@ public class App {
 													}
 												} while (opcionParticipantes != 6);
 												break;
-
-											// MENU DE RECURSOS
-											// DAVE PAEZ
+											// -------------------------------------------------------------------------------------------------
 											case 3:
-												// aqui iria el submenu
-												// de recursos
+												// MENU DE RECURSOS
+												// DAVE PAEZ
 												do {
 													opcionrecursos = Integer.parseInt(JOptionPane.showInputDialog("RECURSOS \n"
 															+ "1. Ver todos los recursos \n"
@@ -369,16 +470,13 @@ public class App {
 													}
 												} while (opcionrecursos != 5);
 												break;
-											// MENU DE PATROCINIO
-											// JUAN DUARTE
+												//--------------------------------------------------------------------------------------------------------
 											case 4:
-												// Menu de patrocinio
+												// MENU DE PATROCINIO
+												// JUAN DUARTE
 												break;
-											// MENU DE MANTENIMIENTO DE
-											// RECURSOS
-											// SAMUEL GONZALES
 											case 5:
-												// Menu de mantenimiento
+												// MENU SAMUEL
 												break;
 											case 6:
 												JOptionPane.showMessageDialog(null, "Cerrando sesión...");
