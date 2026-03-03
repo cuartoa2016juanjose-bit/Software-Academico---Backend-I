@@ -134,12 +134,18 @@ public class App {
                                                 + "5. Mantenimiento de recursos \n"
                                                 + "6. Cerrar sesión"));
                                         switch (opcion2) {
+                                            // MENU DE PROYECTOS
+                                            // JHON STIVEN
                                             case 1:
                                                 // aqui iria el submenu de proyectos
                                                 break;
+                                            // MENU DE PROYECTOS
+                                            // JOHAN GONZALES
                                             case 2:
                                                 // aqui iria el submenu de participantes
                                                 break;
+                                            // MENU DE RECURSOS
+                                            // DAVE PAEZ
                                             case 3:
                                                 // aqui iria el submenu de recursos
                                                 do {
@@ -149,9 +155,8 @@ public class App {
                                                                     + "2. Registrar algun recurso  \n"
                                                                     + "3. Actualizar recurso \n"
                                                                     + "4. Eliminar recurso \n"
-                                                                    + "5. salir"));
+                                                                    + "5. volver al menu principal"));
                                                     switch (opcionrecursos) {
-
                                                         case 1:
                                                             // ver todos los recursos
                                                             if (recursosList.isEmpty()) {
@@ -278,45 +283,37 @@ public class App {
                                                                 JOptionPane.showMessageDialog(null, "ID no encontrado");
                                                             }
                                                             break;
-
-                                                            //---------------------------------------------------------------------
                                                         case 4:
-                                                            // En este caso nos toca buscar el ID
+                                                            // lo mismo pero para eliminar un recurso
                                                             Id_delrecurso = JOptionPane.showInputDialog(
                                                                     "Ingrese el ID del recurso que desea eliminar:");
-                                                            boolean encontradoparaelminar = false; // false, osea no lo
-                                                                                                   // ha encontrado
-                                                                                                   // entonces permanece
-                                                                                                   // apagado
-                                                            char confirmacion;
-                                                            do{
-                                                            confirmacion = JOptionPane.showInputDialog(
-                                                                    "¿Está seguro que desea eliminar este recurso? S o N ")
-                                                                    .toUpperCase().charAt(0);
-                                                                        if(confirmacion == 'S' || confirmacion == 's'){
-                                                                        for (int i = 0; i < recursosList.size(); i++) {
-                                                                // recorre desde la posicion 0 hasta la ultima posicion
-                                                                // del ArrayList
-                                                                // con el .size() sabemos el tamaño del ArrayList
+                                                            boolean iddelrecursoencontrado = false; // apagado, porque
+                                                                                                    // aun no lo hemos
+                                                                                                    // buscado y
+                                                                                                    // comparado
+                                                            for (int i = 0; i < recursosList.size(); i++) {
+                                                                // lo buscamos con un for normal
                                                                 if (recursosList.get(i).getRecursoId()
                                                                         .equals(Id_delrecurso)) {
-                                                                    // si el ID que damos es igual a uno que este
-                                                                    // guardado en X posicion, por eso el (i), que es la
-                                                                    // posicion
-                                                                    encontradoparaelminar = true; // entonces esto se
-                                                                                                  // activa
-                                                                    recursosList.remove(i); // y elimina el recurso de
-                                                                                            // esa posicion
+                                                                    recursosList.remove(i);
+                                                                    iddelrecursoencontrado = true;
                                                                     JOptionPane.showMessageDialog(null,
-                                                                            "Recurso eliminado");
+                                                                            "Recurso eliminado exitosamente");
+                                                                    break;
                                                                 }
-                                                                        }
-                                                            }while(confirmacion != 'N' && confirmacion != 'n');
-                                                            if (!encontradoparaelminar) {
+                                                            }
+                                                            // si al salir del for sigue apagado, entonces el ID no se
+                                                            // encontro
+                                                            if (!iddelrecursoencontrado) {
                                                                 JOptionPane.showMessageDialog(null, "ID no encontrado");
                                                             }
                                                             break;
-
+                                                        case 5:
+                                                            // salir del submenu de recursos, lo devuelve al menu
+                                                            // principal
+                                                            JOptionPane.showMessageDialog(null,
+                                                                    "Devuelta al menu principal");
+                                                            break;
                                                         default:
                                                             JOptionPane.showMessageDialog(null,
                                                                     "ERROR, solo pueden numero del 1 al 5");
@@ -324,11 +321,13 @@ public class App {
                                                     }
                                                 } while (opcionrecursos != 5);
                                                 break;
-                                                
-                                                // ------------------------------------------------------------------------------------
+                                            // MENU DE PATROCINIO
+                                            // JUAN DUARTE
                                             case 4:
                                                 // aqui iria el submenu de patrocinio
                                                 break;
+                                            // MENU DE MANTENIMIENTO DE RECURSOS
+                                            // SAMUEL GONZALES
                                             case 5:
                                                 // aqui iria el submenu de mantenimiento de recursos
                                                 break;
@@ -362,6 +361,7 @@ public class App {
                 case 2:
                     // pedimos datos
                     nombre_delregistro = JOptionPane.showInputDialog("Ingrese su nombre:");
+                    
                     telefono_delregistro = JOptionPane.showInputDialog("Ingrese su telefono:");
                     correo_delregistro = JOptionPane.showInputDialog("Ingrese su correo:");
                     Id_delregistro = JOptionPane.showInputDialog("Ingrese su ID:");
